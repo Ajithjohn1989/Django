@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>list books</title>
+</head>
+<body>
+    <h1>list books</h1>
+    <div>
+
+        <table border="2"  cellpadding="8">
+            <thead>
+            <tr>
+                
+                <th>category</th>
+                <th>title</th>
+                <th>slug</th>
+                <th>author</th>
+                <th>description</th>
+                <th>price</th>
+                <th>is_active</th>
+                <th>image</th>
+            </tr>
+
+            </thead>
+            <tbody>
+                {% for prts in product %}
+            </tbody>
+            <tr>
+                <td>{{prts.category}}</td>
+                <td>{{prts.title}}</td>
+                <td>{{prts.slug}}</td>
+                <td>{{prts.author}}</td>
+                <td>{{prts.description}}</td>
+                <td>{{prts.price}}</td>
+                <td>{{prts.is_active}}</td>
+                <td>{{prts.image}}</td>
+                {% endfor %}
+
+            </tr>
+           
+
+        </table>
+
+    </div>
+
+    
+</body>
+</html>

@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .forms import CategoryForm,ProductForm
 from products.models import Category
+from products.models import Product
 
 
 from django.http import HttpResponse
@@ -27,3 +28,7 @@ def add_product(request):
         form = ProductForm()
     cat=Category.objects.all()
     return render(request,'products/add_books.html', {'form': form,"categories":cat})
+
+def view_product(request):
+    prt=Product.objects.all()
+    return render(request,"products/view_books.html",{"product":prt})
