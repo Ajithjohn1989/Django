@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Product</title>
+</head>
+<body>
+
+    <h2>Edit Product</h2>
+
+    <form  method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+       
+        <label>Category:</label><br>
+        <select name="category" required>
+            <option value="">Select Category</option>
+            {% for cat in categories %}
+                <option value="{{ cat.id }}"
+                    {% if product.instance.category.id == cat.id %} selected {% endif %}>
+                    {{ cat.name }}
+                </option>
+            {% endfor %}
+        </select>
+        <br><br>
+
+       
+        <label>Product Name:</label><br>
+        <input type="text" name="name" value="{{ product.instance.name }}" required>
+        <br><br>
+
+       
+        <label>Price:</label><br>
+        <input type="number" name="price" step="0.01" value="{{ product.instance.price }}" required>
+        <br><br>
+
+        <!-- Stock -->
+        <label>Stock:</label><br>
+        <input type="number" name="stock" value="{{ product.instance.stock }}" required>
+        <br><br>
+
+        <!-- Description -->
+        <label>Description:</label><br>
+        <textarea name="description">{{ product.instance.description }}</textarea>
+        <br><br>
+
+        <!-- Image -->
+        <label>Product Image:</label><br>
+        {% if product.instance.image %}
+            <img src="{{ product.instance.image.url }}" width="150" height="150"><br>
+            <small>Current image</small><br>
+        {% endif %}
+        <input type="file" name="image"><br><br>
+
+        <!-- Submit Button -->
+        <button type="submit">Update Product</button>
+
+    </form>
+
+</body>
+</html>

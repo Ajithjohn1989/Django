@@ -20,3 +20,18 @@ class CategoryForm(forms.ModelForm):
             'name',
             'description',
         ]
+
+
+
+class ProductForm(forms.ModelForm):
+    class Meta:
+        model = Product
+        fields = [
+            'category',
+            'title',
+            'author',
+            'description',
+            'price',
+            'is_active',
+            'image',
+        ]

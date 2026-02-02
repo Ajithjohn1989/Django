@@ -78,7 +78,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': "readify_db",
         'USER':"root",
-        "PASSWORD":'1234@shiv',
+        "PASSWORD":'1234',
         'HOST':'localhost'
     }
 }

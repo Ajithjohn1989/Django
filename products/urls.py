@@ -5,6 +5,7 @@ app_name="products"
 
 urlpatterns=[
     path("add-category",views.add_category,name="add_category"),
-    path("add-product",views.add_product,name="add_product")
+    path("add-product",views.add_product,name="add_product"),
+    path('edit-book/<int:id>/', views.edit_book, name='edit_books'),
 
 ]

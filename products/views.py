@@ -1,6 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect,get_object_or_404
 from .forms import CategoryForm,ProductForm
-from products.models import Category
+from products.models import Category,Product
 
 
 from django.http import HttpResponse
@@ -27,3 +27,18 @@ def add_product(request):
         form = ProductForm()
     cat=Category.objects.all()
     return render(request,'products/add_books.html', {'form': form,"categories":cat})
+
+
+
+def edit_book(request, id):
+    book = get_object_or_404(Product, id=id)   
+
+    if request.method == 'POST':
+        form = ProductForm(request.POST, request.FILES, instance=book)
+        if form.is_valid():
+            form.save()
+            return redirect('book_list')
+    else:
+        form = ProductForm(instance=book)
+
+    return render(request, 'products/edit_books.html', {'form': form})
